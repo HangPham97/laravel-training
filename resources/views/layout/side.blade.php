@@ -33,9 +33,11 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+                    <li class="active"><a href="{{route('news.home')}}" ><i class="fa fa-circle-o"></i> News tables</a></li>
+                    <li class=""><a href="{{route('cate.home')}}"><i class="fa fa-circle-o"></i> Category tables</a></li>
                 </ul>
             </li>
+            
             <li>
                 <a href="../calendar.html">
                     <i class="fa fa-calendar"></i> <span>Calendar</span>

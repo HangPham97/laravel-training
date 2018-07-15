@@ -4,7 +4,7 @@
     <div class="content-wrapper">
         @if(Session('success'))
         @endif
-        <form method="post" action="{{route('new.update',$news->news_id)}}" >
+        <form method="post" action="{{route('news.update',$news->news_id)}}" >
             {{csrf_field()}}
 
             <div class="box box-info">

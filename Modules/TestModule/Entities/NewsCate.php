@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class NewsCate extends Model
 {
-    protected $fillable = ['news_id','cate_id'];
+
     protected $table = "news_cate";
+    protected $fillable = ['news_id','cate_id'];
     public $timestamps = false;
     public $incrementing = false;
     /*

@@ -16,7 +16,7 @@ class Category extends Migration
         Schema::create('category',function(Blueprint $table){
            $table->string('cate_id')->unique();
            $table->string('name');
-           $table->string('note');
+           $table->string('note')->nullable();
         });
         //
     }

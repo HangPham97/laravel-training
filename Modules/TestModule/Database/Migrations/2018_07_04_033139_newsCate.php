@@ -16,9 +16,8 @@ class NewsCate extends Migration
         Schema::create('news_cate',function(Blueprint $table){
             $table->string('news_id');
             $table->string('cate_id');
-            $table->primary('news_id','cate_id');
         });
-        //
+        
     }
 
     /**
