@@ -39,19 +39,13 @@ class TestModuleController extends Controller
      */
     public function store(Request $request)
     {
-
-//        $this->validate(
-//            $request,
-//            ['title' => 'required'],
-//            ['title.required'=> 'this is my custom error message for required']
-//        );
         $news = new news();
-
         $news['news_id'] = $request->news_id;
         $news['title'] = $request->title;
         $news['content'] = $request->news_content;
         $news['sample'] = $request->sample;
         $list_cates = $request->cate;
+
         if(!empty($list_cates)){
 
             foreach ($list_cates as $list_cate){
@@ -60,6 +54,11 @@ class TestModuleController extends Controller
                 $news_cate->cate_id = $list_cate;
                 $news_cate->save();
             }
+        }
+
+        $news_search = news::where('news_id',$news['news_id'])->first();
+        if (!empty($news_search)){
+            return redirect('/testmodule/create')->with("success","ID này đã tồn tại");
         }
         $news->save();
         return redirect('/testmodule/')->with("success","Thêm thành công!");
@@ -119,8 +118,6 @@ class TestModuleController extends Controller
         NewsCate::where('news_id', '=',$id)->delete();
         if(!empty($list_cates)){
             foreach ($list_cates as $list_cate){
-    //            $news_cate_item = NewsCate::where('news_id',$id)->get();
-    //            if(count()
                 $news_cate = NewsCate::where(function ($query) use ($id,$list_cate) {
                     $query->where('news_id', '=', $id);
                     $query->where('cate_id', '=', $list_cate);})

@@ -2,9 +2,7 @@
 <!-- Content Wrapper. Contains page content -->
 @section('content')
     <div class="content-wrapper">
-        @if(Session('success'))
-        @endif
-        <form method="post" action="{{route('news.update',$news->news_id)}}" >
+        <form method="post" action="{{route('news.update',$news->news_id)}}" id="edit_form" >
             {{csrf_field()}}
 
             <div class="box box-info">
@@ -23,7 +21,7 @@
                 <!-- /.box-header -->
                 <div class="box-body pad" style="">
 
-                        <input type="text" name="title" class="form-control" value="{{ old( 'title', $news->title) }}"/>
+                        <input id="title" type="text" name="title" class="form-control" value="{{ old( 'title', $news->title) }}"/>
 
                 </div>
             </div>
@@ -105,13 +103,33 @@
                 </div>
             </div>
             <div class="submit-input"><input type="submit" class="btn btn-block btn-info btn-flat" value="Submit"></div>
-
         </form>
     </div>
-    <script>
-        $(document).ready(function () {
+    <!-- /.content-wrapper -->
+@endsection
+@section('script')
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#edit_form').submit(function(e){
+                var title = $('#title').val();
+                var sample = $('#sample').val();
+                var content = $('#content').val();
+                $(".error").remove();
+                if(title.length < 10){
+                    $('#title').before('<span class="error" style="color: red">This field must be long than 10 charaters</span>');
+                    e.preventDefault();
+                }
+                if (sample.length < 10){
+                    $('#sample').after('<span class="error" style="color: red">This field must be long than 10 charaters</span>');
+                    e.preventDefault();
+                }
+                if (content.length < 10){
+                    $('#content').after('<span class="error" style="color: red">This field must be long than 10 charaters</span>');
+                    e.preventDefault();
+                }
+            })
         })
     </script>
-    <!-- /.content-wrapper -->
 @endsection

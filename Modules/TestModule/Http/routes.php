@@ -2,8 +2,9 @@
 
 Route::group(['middleware' => 'web', 'prefix' => 'testmodule', 'namespace' => 'Modules\TestModule\Http\Controllers'], function()
 {
+    Route::get('table','DatatableController@apiTable')->name('table');
     Route::get('/', 'TestModuleController@index')->name('news.home');;
-    Route::get('edit/{id}',['as'=>'edit','uses'=>'TestModuleController@edit']);
+    Route::get('edit/{id}','TestModuleController@edit')->name('edit');
     Route::post('update/{id}', 'TestModuleController@update')->name('news.update');
     Route::get('create','TestModuleController@create')->name('news.create');
     Route::post('store','TestModuleController@store')->name('news.store');
@@ -14,7 +15,5 @@ Route::group(['middleware' => 'web', 'prefix' => 'testmodule', 'namespace' => 'M
     Route::get('delete/category/{id}','TestModuleController@deleteCate')->name('cate.delete');
     Route::get('edit/Category/{id}','TestModuleController@editCate')->name('cate.edit');
     Route::post('update/Category/{id}','TestModuleController@updateCate')->name('cate.update');
-    Route::get('datatable', 'DataTableController@datatable');
-    Route::get('datatable/getdata', 'DataTableController@getPosts')->name('datatable/getdata');
-
+    Route::get('test','DatatableController@test');
 });

@@ -41,7 +41,7 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-block btn-xs btn-danger btn-del"><a href="{{route('cate.delete',$each_cate->cate_id)}}"> delete</a> </button>
+                                        <button type="button" id="del-button" class="btn btn-block btn-xs btn-danger btn-del"><a href="{{route('cate.delete',$each_cate->cate_id)}}"> delete</a> </button>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -59,4 +59,22 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function(){
+            $('#del-button').click(function (e) {
+
+                var x = confirm("Are you sure you want to delete?");
+                if (x) {
+                    return true;
+                }
+                else {
+
+                    e.preventDefault();
+                    return false;
+                }
+            })
+        })
+    </script>
 @endsection

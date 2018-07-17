@@ -21,6 +21,7 @@
 }
 .add_button{
     float: right;
+    margin-top: 15px;
 }
 .add_button a,.btn-del a{
     color: white;
@@ -31,7 +32,8 @@
     margin-top: 15px;
 }
 .btn-del a{
-    line-height: 5px;
+   line-height: 5px;
+
 }
 .btn.btn-flat{
     border-radius: 3px !important;
@@ -39,4 +41,11 @@
 .td_padding{
     padding-top: 0;
     padding-bottom: 0;
+}
+#admin-table_filter label,#admin-table_paginate{
+    float: right;
+    padding-right: 0px;
+}
+.panel-body{
+    padding-top: 100px;
 }
