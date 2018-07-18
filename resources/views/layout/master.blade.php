@@ -52,7 +52,7 @@
 </head>
 
 
-<body class="hold-transition skin-blue sidebar-mini" style="padding-top:0 !important;" >
+<body class="hold-transition skin-blue sidebar-mini" style="padding-top:0 !important; min-height: 900px" >
 <div class="wrapper">
     @include('layout.header')
     @include('layout.side')
@@ -111,8 +111,20 @@
 <script src="{{asset('dist/js/demo.js')}}"></script>
 <!-- page script -->
 <script>
-    CKEDITOR.replace('sample')
     CKEDITOR.replace('content')
+
+    $(function() {
+        $('#content').ckeditor({
+            toolbar: 'Full',
+            enterMode : CKEDITOR.ENTER_BR,
+            shiftEnterMode: CKEDITOR.ENTER_P,
+        });
+    });
+
+    CKEDITOR.on( 'instanceReady', function( ev ) {
+        // Ends self-closing tags the HTML4 way, like <br>.
+        ev.editor.dataProcessor.writer.selfClosingEnd = '>';
+    });
 </script>
 <script type="text/javascript">
     var table = $('#admin-table').DataTable({
@@ -124,15 +136,39 @@
             {data: 'news_id', name: 'news_id',"width":"5%"},
             {data: 'title', name: 'title',"width":"15%"},
             {data: 'sample', name: 'sample',"width":"20%"},
-            {data: 'content',name: 'content',"width":"35%"},
-            // {data: 'category', name: 'category', "width":"10%"},
+            {data: 'content',name: 'content',"width":"30%"},
+            {data: 'category', name: 'category', "width":"15%"},
             {data: 'action', name: 'action', orderable: false, searchable: false,"width":"15%"},
         ]
     });
 
 
+
+
 </script>
-@yield('script');
+<script>
+    $(document).ready(function(){
+        $('#edit_form').submit(function(e){
+            var title = $('#title').val();
+            var sample = $('#sample').val();
+            var content = $('#content').val();
+            $(".error").remove();
+            if(title.length < 10){
+                $('#title').before('<span class="error" style="color: red">This field must be long than 10 charaters</span>');
+                e.preventDefault();
+            }
+            if (sample.length < 10){
+                $('#sample').after('<span class="error" style="color: red">This field must be long than 10 charaters</span>');
+                e.preventDefault();
+            }
+            if (content.length < 10){
+                $('#content').after('<span class="error" style="color: red">This field must be long than 10 charaters</span>');
+                e.preventDefault();
+            }
+        })
+    })
+</script>
+@yield('script')
 
 </body>
 </html>

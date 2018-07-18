@@ -37,27 +37,7 @@
                     <li class=""><a href="<?php echo e(route('cate.home')); ?>"><i class="fa fa-circle-o"></i> Category tables</a></li>
                 </ul>
             </li>
-            
-            <li>
-                <a href="../calendar.html">
-                    <i class="fa fa-calendar"></i> <span>Calendar</span>
-                    <span class="pull-right-container">
-              <small class="label pull-right bg-red">3</small>
-              <small class="label pull-right bg-blue">17</small>
-            </span>
-                </a>
-            </li>
-            <li>
-                <a href="../mailbox/mailbox.html">
-                    <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                    <span class="pull-right-container">
-              <small class="label pull-right bg-yellow">12</small>
-              <small class="label pull-right bg-green">16</small>
-              <small class="label pull-right bg-red">5</small>
-            </span>
-                </a>
-            </li>
-            <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+
         </ul>
     </section>
     <!-- /.sidebar -->

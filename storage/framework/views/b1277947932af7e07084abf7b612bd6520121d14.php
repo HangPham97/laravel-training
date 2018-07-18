@@ -28,6 +28,7 @@
                                     <th class="col-md-1" style="width: 300px !important;">Title</th>
                                     <th class="col-md-3" style="width: 66px !important;">Sample</th>
                                     <th class="col-md-4">Content</th>
+                                    <th class="col-md-3">Category</th>
                                     <th class="col-md-3">Action</th>
                                 </tr>
                                 </thead>
@@ -48,7 +49,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
-            $('#del-button').click(function (e) {
+            $('.del-button').click(function (e) {
 
                 var x = confirm("Are you sure you want to delete?");
                 if (x) {

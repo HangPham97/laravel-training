@@ -28,30 +28,29 @@ class DatatableController extends Controller
      */
     public function apiTable(){
         $news = news::all();
-//        foreach ($news as $new){
-//            $category = NewsCate::getCateName($new->news_id);
-//            $new->category = $category;
-//        }
-//        dd($news);
+        foreach ($news as $new){
+            $category = NewsCate::getCateName($new->news_id);
+            $new->category = $category;
+            $sample_content = substr($new->content,0,200)."....";
+            $new->content = $sample_content;
+        }
         return DataTables::of($news)
             ->addColumn('action', function($news){
                 return view('testmodule::url',compact('news'));
             })
-//            ->addCollumn('category',function($news){
-//                return view('testmodule::cate_display',compact('news'));})
+            ->addColumn('category',function($news){
+                return view('testmodule::cate_display',compact('news'));})
             ->rawColumns(['action','category'])->make(true);
 
     }
     public function test()
     {
-
-//        $news = news::all();
-//        foreach ($news as $new){
-//            $category = NewsCate::getCateName($new->news_id);
-//
-//            $new->category = $category;
-//            dd($new->category);
-//        }
+        $news = news::all();
+        foreach ($news as $new){
+            $sample_content = substr($new->content,0,100);
+            $new->sub_content = $sample_content;
+            dd($new->sub_content);
+        }
     }
 
     /**

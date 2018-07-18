@@ -16,9 +16,9 @@ class News extends Migration
         //
         Schema::create('news',function(Blueprint $table){
            $table->string('news_id')->unique();;
-           $table->string('title');
-           $table->string('sample',10000);
-           $table->string('content',10000);
+           $table->string('title')->nullable();
+           $table->string('sample',10000)->nullable();
+           $table->string('content',10000)->nullable();
         });
     }
 

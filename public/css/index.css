@@ -16,8 +16,7 @@
 }
 .submit-input{
     width: 100px;
-    margin: 0 auto;
-    padding-bottom: 20px;
+    margin: 20px auto;
 }
 .add_button{
     float: right;
@@ -48,4 +47,46 @@
 }
 .panel-body{
     padding-top: 100px;
+}
+.btn-cate{
+    width: 80px;
+    height: 28px;
+    font-weight: 700;
+}
+.box {
+    margin-bottom: 0;
+    border-top: 0;
+}
+.content-wrapper {
+    overflow: hidden;
+}
+.box-header{
+    padding-bottom: 15px;
+    padding-left: 0;
+    padding-top: 5px;
+}
+h3{
+    font-weight: 600;
+}
+.alert{
+    margin: 0;
+    padding: 5px;
+}
+.form-control, .cke_reset, #cke_content{
+    width: 93%;
+}
+.add-wrapper{
+    padding-bottom: 0;
+}
+.box-body{
+    margin-left: 30px;
+}
+.box{
+    padding-left: 10px;
+}
+.error{
+    margin-bottom: 10px;
+}
+#edit_form{
+    margin-top: 20px;
 }
