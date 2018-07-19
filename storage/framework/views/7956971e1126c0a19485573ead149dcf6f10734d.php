@@ -58,9 +58,9 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body pad" style="">
-                        <input type="hidden" id="hidden_content" value="<?php echo e(old('hidden_content')); ?>">
                         <textarea name="news_content" id="content" >
-                            
+                            <?php echo Request::old('news_content'); ?>
+
                         </textarea>
 
                 </div>
@@ -82,7 +82,7 @@
                         <?php $__currentLoopData = $cate_name; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cate): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label">
-                                        <input class="form-check-input" name="cate[]"  type="checkbox" id="<?php echo e($cate->id); ?>" value="<?php echo e($cate->cate_id); ?>"> <?php echo e($cate->name); ?>
+                                        <input class="form-check-input" name="cate[]"  type="checkbox" id="<?php echo e($cate->id); ?>" value="<?php echo e($cate->cate_id); ?>" <?php echo e((is_array(old('cate')) && in_array($cate->cate_id, old('cate'))) ? ' checked' : ''); ?>> <?php echo e($cate->name); ?>
 
                                 </label>
                             </div>
@@ -94,9 +94,10 @@
         </form>
     </div>
 <?php $__env->stopSection(); ?>
-<?php $__env->startSection('script'); ?>
 
+<?php $__env->startSection('script'); ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
     <script>
         $(document).ready(function(){
             $('#edit_form').on("submit",function(e){
@@ -104,31 +105,25 @@
                 var title = $('#title').val();
                 var sample = $('#sample').val();
                 var content = CKEDITOR.instances['content'].getData();
+
                 $(".error").remove();
                 if(news_id.length < 5){
                     $('#news_id').before('<span class="error" style="color: red; padding-bottom: 5px;">This field must be long than 10 charaters</span>');
-                    $('#edit_form').attr('onsubmit', 'return false');
+                    e.preventDefault();
                 }
                 if(title.length < 10){
                     $('#title').before('<span class="error" style="color: red; padding-bottom: 5px;">This field must be long than 10 charaters</span>');
-                    $('#edit_form').attr('onsubmit', 'return false');
+                    e.preventDefault();
                 }
                 if (sample.length < 10){
                     $('#sample').after('<span class="error" style="color: red; padding-bottom: 5px;">This field must be long than 10 charaters</span>');
-                    $('#edit_form').attr('onsubmit', 'return false');
+                    e.preventDefault();
                 }
                 if (content.length < 10){
                     $('#content').after('<span class="error" style="color: red; padding-bottom: 5px;">This field must be long than 10 charaters</span>');
-                    $('#edit_form').attr('onsubmit', 'return false');
+                    e.preventDefault();
                 }
-
-                var content = CKEDITOR.instances['content'].getData();
-                $('#hidden_content').val(content);
-
-            })
-
-            var content = $('#hidden_content').val();
-            CKEDITOR.instances['content'].setData(content);
+            });
         })
     </script>
 <?php $__env->stopSection(); ?>

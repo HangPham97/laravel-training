@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class news extends Model
 {
-    protected $fillable = ['title','sample','content'];
+    protected $fillable = ['title','sample','content','image'];
     protected $table = "news";
     public $timestamps = false;
     public $incrementing = false;

@@ -113,15 +113,15 @@
                 $(".error").remove();
                 if(title.length < 10){
                     $('#title').before('<span class="error" style="color: red">This field must be long than 10 charaters</span>');
-                    return false;
+                    e.preventDefault();
                 }
                 if (sample.length < 10){
                     $('#sample').after('<span class="error" style="color: red">This field must be long than 10 charaters</span>');
-                    return false;
+                    e.preventDefault();
                 }
                 if (content.length < 10){
                     $('#content').after('<span class="error" style="color: red">This field must be long than 10 charaters</span>');
-                    return false;
+                    e.preventDefault();
                 }
             })
         })

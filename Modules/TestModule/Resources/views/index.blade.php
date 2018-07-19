@@ -50,14 +50,13 @@
     <script>
         $(document).ready(function(){
             $('.del-button').click(function (e) {
-
                 var x = confirm("Are you sure you want to delete?");
                 if (x) {
+                    x = false;
                     return true;
+
                 }
                 else {
-
-                    e.preventDefault();
                     return false;
                 }
             })

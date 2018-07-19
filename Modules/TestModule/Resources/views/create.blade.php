@@ -58,9 +58,8 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body pad" style="">
-                        <input type="hidden" id="hidden_content" value="{{old('hidden_content')}}">
                         <textarea name="news_content" id="content" >
-                            
+                            {!! Request::old('news_content') !!}
                         </textarea>
 
                 </div>
@@ -82,7 +81,7 @@
                         @foreach($cate_name as $cate)
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label">
-                                        <input class="form-check-input" name="cate[]"  type="checkbox" id="{{$cate->id}}" value="{{$cate->cate_id}}"> {{$cate->name}}
+                                        <input class="form-check-input" name="cate[]"  type="checkbox" id="{{$cate->id}}" value="{{$cate->cate_id}}" {{ (is_array(old('cate')) && in_array($cate->cate_id, old('cate'))) ? ' checked' : '' }}> {{$cate->name}}
                                 </label>
                             </div>
                         @endforeach
@@ -93,9 +92,10 @@
         </form>
     </div>
 @endsection
-@section('script')
 
+@section('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
     <script>
         $(document).ready(function(){
             $('#edit_form').on("submit",function(e){
@@ -103,31 +103,25 @@
                 var title = $('#title').val();
                 var sample = $('#sample').val();
                 var content = CKEDITOR.instances['content'].getData();
+
                 $(".error").remove();
                 if(news_id.length < 5){
                     $('#news_id').before('<span class="error" style="color: red; padding-bottom: 5px;">This field must be long than 10 charaters</span>');
-                    $('#edit_form').attr('onsubmit', 'return false');
+                    e.preventDefault();
                 }
                 if(title.length < 10){
                     $('#title').before('<span class="error" style="color: red; padding-bottom: 5px;">This field must be long than 10 charaters</span>');
-                    $('#edit_form').attr('onsubmit', 'return false');
+                    e.preventDefault();
                 }
                 if (sample.length < 10){
                     $('#sample').after('<span class="error" style="color: red; padding-bottom: 5px;">This field must be long than 10 charaters</span>');
-                    $('#edit_form').attr('onsubmit', 'return false');
+                    e.preventDefault();
                 }
                 if (content.length < 10){
                     $('#content').after('<span class="error" style="color: red; padding-bottom: 5px;">This field must be long than 10 charaters</span>');
-                    $('#edit_form').attr('onsubmit', 'return false');
+                    e.preventDefault();
                 }
-
-                var content = CKEDITOR.instances['content'].getData();
-                $('#hidden_content').val(content);
-
-            })
-
-            var content = $('#hidden_content').val();
-            CKEDITOR.instances['content'].setData(content);
+            });
         })
     </script>
 @endsection

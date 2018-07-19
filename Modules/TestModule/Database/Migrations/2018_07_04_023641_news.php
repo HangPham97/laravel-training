@@ -19,6 +19,7 @@ class News extends Migration
            $table->string('title')->nullable();
            $table->string('sample',10000)->nullable();
            $table->string('content',10000)->nullable();
+           $table->string('image',200);
         });
     }
 

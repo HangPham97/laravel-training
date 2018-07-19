@@ -146,28 +146,6 @@
 
 
 </script>
-<script>
-    $(document).ready(function(){
-        $('#edit_form').submit(function(e){
-            var title = $('#title').val();
-            var sample = $('#sample').val();
-            var content = $('#content').val();
-            $(".error").remove();
-            if(title.length < 10){
-                $('#title').before('<span class="error" style="color: red">This field must be long than 10 charaters</span>');
-                e.preventDefault();
-            }
-            if (sample.length < 10){
-                $('#sample').after('<span class="error" style="color: red">This field must be long than 10 charaters</span>');
-                e.preventDefault();
-            }
-            if (content.length < 10){
-                $('#content').after('<span class="error" style="color: red">This field must be long than 10 charaters</span>');
-                e.preventDefault();
-            }
-        })
-    })
-</script>
 <?php echo $__env->yieldContent('script'); ?>
 
 </body>
