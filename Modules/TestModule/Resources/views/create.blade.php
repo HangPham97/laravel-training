@@ -3,7 +3,7 @@
 @section('content')
     <div class="content-wrapper add-wrapper" >
 
-        <form class="col-md-offset-2 col-md-8" id="edit_form" method="post" action="{{route('news.store')}}" >
+        <form class="col-md-offset-2 col-md-8" id="edit_form" method="post" action="{{route('news.store')}}" enctype="multipart/form-data">
             {{csrf_field()}}
 
             <div class="box">
@@ -26,7 +26,7 @@
                 <!-- /.box-header -->
                 <div class="box-body pad" style="">
 
-                        <input id="title" type="text" name="title" class="form-control" value="{{old('title')}}"/>
+                        <input id="title" required type="text" name="title" class="form-control" value="{{old('title')}}"/>
 
                 </div>
             </div>
@@ -39,7 +39,7 @@
                 <!-- /.box-header -->
                 <div class="box-body pad">
 
-                    <input id="sample" type="text" name="sample" class="form-control" value="{{old('sample')}}"/>
+                    <input id="sample" required type="text" name="sample" class="form-control" value="{{old('sample')}}"/>
 
                 </div>
             </div>
@@ -62,6 +62,19 @@
                             {!! Request::old('news_content') !!}
                         </textarea>
 
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Image
+                    </h3>
+                    <!-- /. tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body pad">
+                    <input type="file" required="" class="form-control file_val" name="image" value="" accept="image/*" onchange="readURL(this);">
+                    <img  id="image-url" src="" alt="" width="580px" height="400px" padding-top="20px">
                 </div>
             </div>
             <div class="box">
@@ -123,5 +136,17 @@
                 }
             });
         })
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    document.getElementById('image-url').src =  e.target.result;
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
 @endsection

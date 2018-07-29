@@ -7,20 +7,20 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use DataTables;
 
-use Modules\AdminModule\Entities\News;
-use Modules\AdminModule\Entities\Category;
-use Modules\AdminModule\Entities\NewsCate;
+use Modules\TestModule\Entities\News;
+use Modules\TestModule\Entities\Category;
+use Modules\TestModule\Entities\NewsCate;
 class DatatableController extends Controller
 {
     /**
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
-    {
-        return view('adminmodule::index');
-
-    }
+//    public function index()
+//    {
+//        return view('adminmodule::index');
+//
+//    }
 
     /**
      * Show the form for creating a new resource.
@@ -31,8 +31,9 @@ class DatatableController extends Controller
         foreach ($news as $new){
             $category = NewsCate::getCateName($new->news_id);
             $new->category = $category;
-            $sample_content = substr($new->content,0,200)."....";
+            $sample_content = substr($new->content,0,200)."...";
             $new->content = $sample_content;
+            $new->image = News::getDataUrl($new->image);
         }
         return DataTables::of($news)
             ->addColumn('action', function($news){
@@ -43,15 +44,21 @@ class DatatableController extends Controller
             ->rawColumns(['action','category'])->make(true);
 
     }
-    public function test()
+
+    public function getCustomFilterData(Request $request)
     {
-        $news = news::all();
-        foreach ($news as $new){
-            $sample_content = substr($new->content,0,100);
-            $new->sub_content = $sample_content;
-            dd($new->sub_content);
-        }
+        return News::getCustomFilterData($request);
     }
+
+//    public function test()
+//    {
+//        $news = news::all();
+//        foreach ($news as $new){
+//            $sample_content = substr($new->content,0,100);
+//            $new->sub_content = $sample_content;
+//            dd($new->sub_content);
+//        }
+//    }
 
     /**
      * Store a newly created resource in storage.

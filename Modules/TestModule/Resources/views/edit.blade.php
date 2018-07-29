@@ -2,7 +2,7 @@
 <!-- Content Wrapper. Contains page content -->
 @section('content')
     <div class="content-wrapper">
-        <form  class="col-md-8 col-md-offset-2" method="post" action="{{route('news.update',$news->news_id)}}" id="edit_form" >
+        <form  class="col-md-8 col-md-offset-2" method="post" action="{{route('news.update',$news->news_id)}}" id="edit_form" enctype="multipart/form-data" >
             {{csrf_field()}}
 
             <div class="box">
@@ -58,6 +58,18 @@
                             {{old('content',$news->content)}}
                         </textarea>
 
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Image
+                    </h3>
+                    <!-- /. tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body pad">
+                    <input type="file" id="image" required="" class="form-control file_val" name="image" value="" accept="image/*" onchange="readURL(this);">
+                    <img  id="image-url" src="{{\Modules\TestModule\Entities\news::getDataUrl($news->image)}}" alt="" width="580px" height="400px"  margin-top="50px">
                 </div>
             </div>
             <div class="box">
@@ -122,5 +134,16 @@
                 }
             })
         })
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    document.getElementById('image-url').src =  e.target.result;
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
 @endsection

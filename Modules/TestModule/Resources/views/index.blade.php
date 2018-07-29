@@ -21,15 +21,31 @@
                             </div>
                         </div>
                         <div class="panel-body">
+
+                            <form method="POST" id="search-form" class="form-inline" role="form">
+
+                                <div class="form-group">
+                                    <label for="name">Title</label>
+                                    <input type="text" class="form-control" name="title" id="title" placeholder="search title">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Category</label>
+                                    <input type="text" class="form-control" name="category" id="category" placeholder="search category">
+                                </div>
+
+                                <button type="submit" class="btn btn-primary" >Search</button>
+                            </form>
                             <table id="admin-table" class="table table-striped">
                                 <thead>
                                 <tr>
                                     <th >ID</th>
+                                    <th class="col-md-1" style="width: 300px !important;">Image</th>
                                     <th class="col-md-1" style="width: 300px !important;">Title</th>
                                     <th class="col-md-3" style="width: 66px !important;">Sample</th>
                                     <th class="col-md-4">Content</th>
                                     <th class="col-md-3">Category</th>
                                     <th class="col-md-3">Action</th>
+
                                 </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -47,16 +63,18 @@
 @section('script')
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
     <script>
         $(document).ready(function(){
             $('.del-button').click(function (e) {
-                var x = confirm("Are you sure you want to delete?");
+                var x = false;
+                x = confirm("Are you sure you want to delete?");
                 if (x) {
                     x = false;
                     return true;
-
                 }
                 else {
+
                     return false;
                 }
             })

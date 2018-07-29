@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'name' => 'TestModule'
+    'name' => 'AdminModule'
 ];

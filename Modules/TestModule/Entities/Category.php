@@ -13,4 +13,7 @@ class category extends Model
     public function news(){
         return $this->belongsTo('Modules\TestModule\Entities\News');
     }
+    public static function getAll(){
+        return Category::all();
+    }
 }
