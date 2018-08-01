@@ -17,8 +17,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = news::all();
-        return view('testmodule::index', compact('news'));
+        $categories = Category::all();
+
+        return view('testmodule::index', compact('categories'));
     }
 
     /**
@@ -43,9 +44,9 @@ class NewsController extends Controller
         $news['title'] = $request->title;
         $news['content'] = $request->news_content;
         $news['sample'] = $request->sample;
-        if ($request->hasFile('image')) {
+        if ($request->hasFile('image')) { //check if has input image
             $img = $request->file('image')->getClientOriginalName();
-            $request->image->move('images', $img);
+            $request->image->move('images', $img); //move image to serve
             $news['image'] = $img;
         }
         $news_search = news::where('news_id', $news['news_id'])->first();
@@ -62,7 +63,7 @@ class NewsController extends Controller
                 }
             }
             $news->save();
-            return redirect('/testmodule/')->with("success", "Thêm thành công!");
+            return redirect('/testmodule/news')->with("success", "Thêm thành công!");
         }
     }
 
@@ -114,14 +115,14 @@ class NewsController extends Controller
 
 
         News::where('news_id', $id)->update($news_update);
-        return redirect('/testmodule/')->with("success", "Chỉnh sửa thành công!");
+        return redirect('/testmodule/news')->with("success", "Chỉnh sửa thành công!");
     }
 
     public function delete($news_id)
     {
         News::where('news_id', $news_id)->delete();
         NewsCate::where('news_id', $news_id)->delete();
-        return redirect('/testmodule/')->with("success", "Xóa thành công!");
+        return redirect('/testmodule/news')->with("success", "Xóa thành công!");
     }
 
     /**

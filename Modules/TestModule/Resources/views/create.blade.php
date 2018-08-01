@@ -1,122 +1,116 @@
 @extends('layout.master')
 <!-- Content Wrapper. Contains page content -->
 @section('content')
-    <div class="content-wrapper add-wrapper" >
-
-        <form class="col-md-offset-2 col-md-8" id="edit_form" method="post" action="{{route('news.store')}}" enctype="multipart/form-data">
+    <div class="content-wrapper">
+        <form  method="post" action="{{route('news.store')}}" id="edit_form" enctype="multipart/form-data" >
             {{csrf_field()}}
-
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">ID
-                    </h3>
-                    <span style="color:red; padding-left: 20px;">{{Session('success')}}</span>
-                    <div class="box-body pad" style="">
-                        <input id="news_id" type="text" required name="news_id" value="{{old('news_id')}}" class="form-control"/>
+            <div class="form-body col-md-12">
+                <div class="col-md-8 left-bar">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">ID:
+                            </h3>
+                            <span style="color:red; padding-left: 20px;">{{Session('success')}}</span>
+                        </div>
+                        <div class="box-body pad" style="">
+                            <input id="news_id" type="text" name="news_id" class="form-control" value="{{old('news_id')}}"/>
+                        </div>
                     </div>
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Title
+                            </h3>
+                            <!-- /. tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body pad" style="">
 
-                </div>
-            </div>
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">Title
-                    </h3>
-                    <!-- /. tools -->
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body pad" style="">
+                            <input id="title" type="text" name="title" class="form-control" value="{{old('title')}}"/>
 
-                        <input id="title" required type="text" name="title" class="form-control" value="{{old('title')}}"/>
-
-                </div>
-            </div>
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">Sample
-                    </h3>
-                    <!-- /. tools -->
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body pad">
-
-                    <input id="sample" required type="text" name="sample" class="form-control" value="{{old('sample')}}"/>
-
-                </div>
-            </div>
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">Content
-                    </h3>
-                    <!-- tools box -->
-                    <div class="pull-right box-tools">
-                        <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
-                            <i class="fa fa-minus"></i></button>
-                        <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove">
-                            <i class="fa fa-times"></i></button>
+                        </div>
                     </div>
-                    <!-- /. tools -->
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body pad" style="">
-                        <textarea name="news_content" id="content" >
-                            {!! Request::old('news_content') !!}
-                        </textarea>
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Sample
+                            </h3>
+                            <!-- /. tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body pad" style="">
 
-                </div>
-            </div>
+                            <input id="sample" type="text" name="sample" class="form-control" value="{{old('sample')}}"/>
 
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">Image
-                    </h3>
-                    <!-- /. tools -->
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body pad">
-                    <input type="file" required="" class="form-control file_val" name="image" value="" accept="image/*" onchange="readURL(this);">
-                    <img  id="image-url" src="" alt="" width="580px" height="400px" padding-top="20px">
-                </div>
-            </div>
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">Category
-                    </h3>
-                    <!-- tools box -->
-                    <div class="pull-right box-tools">
-                        <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
-                            <i class="fa fa-minus"></i></button>
-                        <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove">
-                            <i class="fa fa-times"></i></button>
+                        </div>
                     </div>
-                    <!-- /. tools -->
-                </div>
-                <div class="box-body pad cate-pad" style="">
-                        @foreach($cate_name as $cate)
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                        <input class="form-check-input" name="cate[]"  type="checkbox" id="{{$cate->id}}" value="{{$cate->cate_id}}" {{ (is_array(old('cate')) && in_array($cate->cate_id, old('cate'))) ? ' checked' : '' }}> {{$cate->name}}
-                                </label>
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Content
+                            </h3>
+                            <!-- tools box -->
+                            <div class="pull-right box-tools">
+                                <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
+                                    <i class="fa fa-minus"></i></button>
                             </div>
-                        @endforeach
+                            <!-- /. tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body pad" style="">
+
+                            <textarea name="news_content" id="content-edit">
+                                {!! Request::old('news_content') !!}
+                            </textarea>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 right-bar">
+
+                    <div class="box">
+                        <div class="box-header box-img-create">
+                            <h3 class="box-title">Image
+                            </h3>
+                            <!-- /.box-header -->
+                            <div class="box-body pad">
+                                <input type="file"  required id="image" class="form-control file_val image-create" name="image" value="{{old('image')}}" accept="image/*" onchange="readURL(this);">
+                                <img  id="image-url" src="../images/No_image_3x4.svg.png" alt="" width="95%" height="150px">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box box-cate-create">
+                        <div class="box-header">
+
+                            <h3 class="box-title">Category
+                            </h3>
+                            <div class="box-body pad cate-pad" style="">
+                                @foreach($cate_name as $cate)
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" name="cate[]"  type="checkbox" id="{{$cate->id}}" value="{{$cate->cate_id}}" {{ (is_array(old('cate')) && in_array($cate->cate_id, old('cate'))) ? ' checked' : '' }}> {{$cate->name}}
+                                        </label>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="submit-input"><input type="submit" class="btn btn-block btn-info btn-flat" value="Submit"></div>
-
         </form>
     </div>
+    <!-- /.content-wrapper -->
 @endsection
-
 @section('script')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
+        CKEDITOR.replace('content-edit')
         $(document).ready(function(){
             $('#edit_form').on("submit",function(e){
                 var news_id = $('#news_id').val();
                 var title = $('#title').val();
                 var sample = $('#sample').val();
-                var content = CKEDITOR.instances['content'].getData();
-
+                var content = CKEDITOR.instances['content-edit'].getData();
                 $(".error").remove();
                 if(news_id.length < 5){
                     $('#news_id').before('<span class="error" style="color: red; padding-bottom: 5px;">This field must be long than 10 charaters</span>');
@@ -131,7 +125,7 @@
                     e.preventDefault();
                 }
                 if (content.length < 10){
-                    $('#content').after('<span class="error" style="color: red; padding-bottom: 5px;">This field must be long than 10 charaters</span>');
+                    $('#content-edit').after('<span class="error" style="color: red; padding-bottom: 5px;">This field must be long than 10 charaters</span>');
                     e.preventDefault();
                 }
             });

@@ -1,56 +1,41 @@
 @extends('layout.master')
-    <!-- Content Wrapper. Contains page content -->
+<!-- Content Wrapper. Contains page content -->
 @section('content')
     <div class="content-wrapper">
 
         <!-- Main content -->
         <section class="content">
-            <div class="alert"> <p style="color:red;">
+            <div class="alert"><p style="color:red;">
                     {{Session('success')}}
                 </p>
             </div>
             <div class="row">
+
                 <div class="col-xs-12">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title">Hover Data Table</h3>
-                            <div class="add_button"><button type="button" class="btn btn-block btn-info btn-flat"><a href="{{('create/category')}}">Add</a></button></div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading col-md-12">
+                            <h3 class="box-title col-md-6">Hover Data Table</h3>
+                            <div class="add_button">
+                                <button type="button" class="btn btn-block btn-info btn-flat"><a
+                                            href="{{ route('news.create') }}">Add</a></button>
+                            </div>
                         </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <table id="example2" class="table table-bordered table-hover">
+
+                        <div class="panel-body">
+                            <table id="admin-table" class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th class="col-md-1">ID</th>
-                                    <th class="col-md-2">NAME</th>
-                                    <th class="col-md-5">NOTE</th>
-                                    <th class="col-md-1">EDIT</th>
-                                    <th class="col-md-1">DELETE</th>
+                                    <th>ID</th>
+                                    <th class="col-md-1" style="width: 300px !important;">Name</th>
+                                    <th class="col-md-1" style="width: 300px !important;">Note</th>
+                                    <th class="col-md-3">Action</th>
+
                                 </tr>
                                 </thead>
-                                <tbody>
-                                @foreach($cate as $each_cate)
-                                <tr class="td_padding">
-                                    <td><?php echo $each_cate->cate_id?></td>
-                                    <td><?php echo $each_cate->name?></td>
-                                    <td><?php echo $each_cate->note?></td>
-
-                                    <td>
-                                        <a class="btn btn-app edit-custom"  href="{{route('cate.edit',$each_cate->cate_id)}}">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <button type="button" id="del-button" class="btn btn-block btn-xs btn-danger btn-del"><a href="{{route('cate.delete',$each_cate->cate_id)}}"> delete</a> </button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                                </tbody>
+                                <tbody></tbody>
                             </table>
                         </div>
-                        <!-- /.box-body -->
                     </div>
-                    <!-- /.box -->
                 </div>
                 <!-- /.col -->
             </div>
@@ -58,23 +43,36 @@
         </section>
         <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
 @endsection
 @section('script')
-    <script>
-        $(document).ready(function(){
-            $('#del-button').click(function (e) {
 
-                var x = confirm("Are you sure you want to delete?");
-                if (x) {
-                    return true;
-                }
-                else {
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-                    e.preventDefault();
-                    return false;
-                }
-            })
-        })
+    <script src="{{ asset('assets/dataTables/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/dataTables/js/dataTables.bootstrap.min.js') }}"></script>
+
+    <script type="text/javascript">
+        var table = $('#admin-table').DataTable({
+            processing: true,
+            serverSide: true,
+
+            ajax: {
+                url: "{{ route('category') }}",
+                // data: function (d) {
+                //     d.title = $('input[name=title]').val();
+                //     d.category = $('input[name=category]').val();
+                // }
+            },
+            columns: [
+                {data: 'cate_id', name: 'cate_id', "width": "4%"},
+                {data: 'name', name: 'name', "width": "15%"},
+                {data: 'note', name: 'note', "width": "19%"},
+                {data: 'action', name: 'action', orderable: false, searchable: false, "width": "14%"},
+            ]
+        });
+
     </script>
+
 @endsection

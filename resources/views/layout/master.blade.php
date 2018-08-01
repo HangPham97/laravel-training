@@ -8,16 +8,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{ asset('assets/bootstrap/favicon.ico') }}">
-
-    <title>Fixed Top Navbar Example for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
-    {{-- dataTables --}}
-    <link href="{{ asset('assets/datatables/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
-    {{-- SweetAlert2 --}}
+     {{--dataTables --}}
+     {{--SweetAlert2 --}}
     <script src="{{ asset('assets/sweetalert2/sweetalert2.min.js') }}"></script>
     <link href="{{ asset('assets/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
 
@@ -28,7 +24,8 @@
     <link href="{{ asset('assets/bootstrap/css/navbar-fixed-top.css') }}" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]>
+    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="{{ asset('assets/bootstrap/js/ie-emulation-modes-warning.js') }}"></script>
     <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
     <!-- Font Awesome -->
@@ -49,6 +46,7 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    @yield('link')
 </head>
 
 
@@ -58,31 +56,23 @@
     @include('layout.side')
     @yield('content')
     @include('layout.footer')
-    @include('layout.aside')
     <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="{{ asset('assets/jquery/jquery-1.12.4.min.js') }}"></script>
-<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
 
-{{-- dataTables --}}
-<script src="{{ asset('assets/dataTables/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('assets/dataTables/js/dataTables.bootstrap.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
 
 {{-- Validator --}}
 <script src="{{ asset('assets/validator/validator.min.js') }}"></script>
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="{{ asset('assets/bootstrap/js/ie10-viewport-bug-workaround.js') }}"></script>
-<script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-<!-- DataTables -->
-<script src="{{asset('bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
 <!-- SlimScroll -->
 <script src="{{asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
 <!-- FastClick -->
@@ -99,53 +89,10 @@
 <!-- Bootstrap WYSIHTML5 -->
 <script src="{{asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
 <script>
-    $(function () {
-        // Replace the <textarea id="editor1"> with a CKEditor
-        // instance, using default configuration.
-        CKEDITOR.replace('editor1')
-        //bootstrap WYSIHTML5 - text editor
-        $('.textarea').wysihtml5()
-    })
 </script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
 <!-- page script -->
-<script>
-    CKEDITOR.replace('content')
-
-    $(function() {
-        $('#content').ckeditor({
-            toolbar: 'Full',
-            enterMode : CKEDITOR.ENTER_BR,
-            shiftEnterMode: CKEDITOR.ENTER_P,
-        });
-    });
-
-    CKEDITOR.on( 'instanceReady', function( ev ) {
-        // Ends self-closing tags the HTML4 way, like <br>.
-        ev.editor.dataProcessor.writer.selfClosingEnd = '>';
-    });
-</script>
-<script type="text/javascript">
-    var table = $('#admin-table').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "{{ route('table') }}",
-
-        columns: [
-            {data: 'news_id', name: 'news_id',"width":"5%"},
-            {data: 'title', name: 'title',"width":"15%"},
-            {data: 'sample', name: 'sample',"width":"20%"},
-            {data: 'content',name: 'content',"width":"30%"},
-            {data: 'category', name: 'category', "width":"15%"},
-            {data: 'action', name: 'action', orderable: false, searchable: false,"width":"15%"},
-        ]
-    });
-
-
-
-
-</script>
 @yield('script')
 
 </body>

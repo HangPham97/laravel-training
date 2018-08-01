@@ -46,12 +46,11 @@
     padding-right: 0px;
 }
 .panel-body{
-    padding-top: 100px;
+    padding-left: 20px;
 }
 .btn-cate{
-    width: 80px;
-    height: 28px;
-    font-weight: 700;
+    width: 100px;
+    margin-bottom: 5px;
 }
 .box {
     margin-bottom: 0;
@@ -89,4 +88,73 @@ h3{
 }
 #edit_form{
     margin-top: 20px;
+}
+#search-form {
+    padding-bottom: 20px;
+}
+.image-edit{
+    margin-bottom: 45px;
+}
+.right-bar, .left-bar{
+    padding: 0;
+}
+
+.box-img{
+    padding-top: 50px;
+    padding-bottom: 43px;
+}
+.box-cate{
+    padding-bottom: 25px;
+}
+.cate-box{
+    margin-bottom: 20px;
+}
+.box-cate-create{
+    padding-bottom: 162px;
+    padding-top: 20px;
+}
+.form-body{
+    margin-bottom: 30px;
+    padding-left: 0;
+    margin-left: 10px;
+    overflow: hidden;
+    background-color: white;
+}
+.box{
+    border-radius: 0;
+    box-shadow: 0 0 1px 0 rgba(0,0,0,0.1)
+}
+.box-note{
+    padding-bottom: 20px;
+}
+.box-img-create{
+    padding-top: 10px;
+}
+.image-create{
+    margin-bottom: 20px;
+}
+#search-form input, .selectpicker{
+    height: 34px;
+    background-color: white;
+    border-color: #d2d6de;
+    padding: 6px 12px;
+    border-radius: 3px;
+}
+#search-form input{
+    margin: 10px;
+    width:250px;
+}
+.selectpicker {
+    margin-left: 10px;
+    margin-right: 20px;
+}
+.card label{
+    color: black;
+    font-size: 15px;
+}
+.sidebar .nav p, .off-canvas-sidebar .nav p{
+    font-size: 13px;
+}
+.sidebar .nav li>a{
+    font-size: 12px;
 }

@@ -10,6 +10,7 @@
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5.4",
+        "nesbot/carbon": "^1.32",
         "unisharp/laravel-ckeditor": "^4.7",
         "vinelab/laravel-editor": "*",
         "yajra/laravel-datatables-oracle": "~8.0"

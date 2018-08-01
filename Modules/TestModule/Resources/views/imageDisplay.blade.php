@@ -1,1 +1,1 @@
-<img src="{{$news->images}}" alt="">
+<img src="{{$news->images}}" alt="" width="90px" height="50px">

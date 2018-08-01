@@ -2,15 +2,19 @@
 <!-- Content Wrapper. Contains page content -->
 @section('content')
     <div class="content-wrapper">
-        <form   method="post" action="{{route('cate.update',$cate->cate_id)}}" id="edit_form" enctype="multipart/form-data" >
+        <form   method="post" action="{{route('cate.store')}}" id="edit_form" enctype="multipart/form-data" >
             {{csrf_field()}}
-            <div class="form-body col-md-8 col-md-offset-2">
+            <div class="cate-box col-md-6 col-md-offset-3">
                 <div class="left-bar">
                     <div class="box">
                         <div class="box-header">
                             <h3 class="box-title">ID:
                             </h3>
+                            <span style="color:red; padding-left: 20px;">{{Session('success')}}</span>
+                        </div>
+                        <div class="box-body pad" style="">
                             <input id="cate-id" type="text" name="cate_id" class="form-control" value=""/>
+
                         </div>
                     </div>
                     <div class="box">
@@ -22,7 +26,7 @@
                         <!-- /.box-header -->
                         <div class="box-body pad" style="">
 
-                            <input id="name" type="text" name="name" class="form-control" value=""/>
+                            <input id="name" type="text" name="name" class="form-control" value="{{old('name')}}"/>
 
                         </div>
                     </div>
@@ -35,7 +39,7 @@
                         <!-- /.box-header -->
                         <div class="box-body pad" style="">
 
-                            <input id="note" type="text" name="note" class="form-control" value=""/>
+                            <input id="note" type="text" name="note" class="form-control" value="{{old('name')}}"/>
 
                         </div>
                     </div>

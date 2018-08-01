@@ -20,6 +20,9 @@ class News extends Migration
            $table->string('sample',10000)->nullable();
            $table->string('content',10000)->nullable();
            $table->string('image',200);
+           $table->integer('view')->nullable();
+           $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 
