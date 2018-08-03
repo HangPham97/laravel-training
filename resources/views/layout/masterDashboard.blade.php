@@ -11,11 +11,14 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <!-- CSS Files -->
-    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
+
     <link href="{{asset('assets/css/now-ui-dashboard.css?v=1.1.0')}}" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="{{asset('assets/demo/demo.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('bower_components/Ionicons/css/ionicons.min.css')}}">
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
+    <link href="{{asset('assets/demo/demo.css')}}" rel="stylesheet" />
     @yield('link')
 </head>
 
@@ -128,8 +131,7 @@
 <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{asset('assets/demo/demo.js')}}"></script>
 
-
-
+<script src="{{asset('bower_components/ckeditor/ckeditor.js')}}"></script>
 <script>
     $(".table-menu").hide();
     $( ".toggle-down" ).click(function() {

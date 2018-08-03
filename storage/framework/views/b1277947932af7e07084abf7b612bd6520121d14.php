@@ -1,9 +1,3 @@
-<!-- Content Wrapper. Contains page content -->
-<?php $__env->startSection('link'); ?>
-    <link rel="stylesheet" href="<?php echo e(asset('bower_components/bootstrap/dist/css/bootstrap.min.css')); ?>">
-
-    <link src="<?php echo e(asset('css/index.css')); ?>">
-<?php $__env->stopSection(); ?>
 <?php $__env->startSection('sidebar-wrapper'); ?>
     <div class="sidebar-wrapper">
         <ul class="nav">
@@ -137,7 +131,7 @@
                     data: 'images',
                     "orderable": true,
                     "searchable": true,
-                    "width": "8%"
+                    "width": "10%"
                 },
                 // {data: 'images',name:'image'},
                 {data: 'title', name: 'title', "width": "15%"},
@@ -154,7 +148,7 @@
                     },
                 },
                 {data: 'category', name: 'category', "width": "10%"},
-                {data: 'action', name: 'action', orderable: false, searchable: false, "width": "20%"},
+                {data: 'action', name: 'action', orderable: false, searchable: false, "width": "18%"},
             ]
         });
 

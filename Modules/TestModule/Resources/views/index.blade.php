@@ -1,10 +1,4 @@
 @extends('layout.masterDashboard')
-<!-- Content Wrapper. Contains page content -->
-@section('link')
-    <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
-
-    <link src="{{ asset('css/index.css') }}">
-@endsection
 @section('sidebar-wrapper')
     <div class="sidebar-wrapper">
         <ul class="nav">
@@ -136,7 +130,7 @@
                     data: 'images',
                     "orderable": true,
                     "searchable": true,
-                    "width": "8%"
+                    "width": "10%"
                 },
                 // {data: 'images',name:'image'},
                 {data: 'title', name: 'title', "width": "15%"},
@@ -153,7 +147,7 @@
                     },
                 },
                 {data: 'category', name: 'category', "width": "10%"},
-                {data: 'action', name: 'action', orderable: false, searchable: false, "width": "20%"},
+                {data: 'action', name: 'action', orderable: false, searchable: false, "width": "18%"},
             ]
         });
 

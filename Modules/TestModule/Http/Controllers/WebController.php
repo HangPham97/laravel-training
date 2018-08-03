@@ -29,6 +29,19 @@ class WebController extends Controller
 //        dd($data);
         return view('testmodule::chartTemplate', compact('data'));
     }
+    public function getViewChart()
+    {
+
+        $months_count = DB::table("news")
+            ->select(DB::raw("extract(MONTH from created_at) as month"), DB::raw("SUM('view') total_views"))
+            ->groupBy(DB::raw("extract(MONTH from created_at)"))
+            ->orderBy(DB::raw("extract(MONTH from created_at)"))
+            ->get();
+        $data = news::renameMonth($months_count);
+        $data = json_encode($data);
+//        dd($data);
+        return view('testmodule::chartTemplate', compact('data'));
+    }
 
     public static function test()
     {
