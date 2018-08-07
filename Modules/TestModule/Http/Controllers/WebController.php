@@ -18,7 +18,7 @@ class WebController extends Controller
      */
     public function getChart()
     {
-
+        $news = News::orderBy('created_at', 'desc')->paginate(12);
         $months_count = DB::table("news")
             ->select(DB::raw("extract(MONTH from created_at) as month"), DB::raw("(COUNT(*)) total_news"))
             ->groupBy(DB::raw("extract(MONTH from created_at)"))
@@ -26,42 +26,36 @@ class WebController extends Controller
             ->get();
         $data = news::renameMonth($months_count);
         $data = json_encode($data);
-//        dd($data);
-        return view('testmodule::chartTemplate', compact('data'));
-    }
-    public function getViewChart()
-    {
-
-        $months_count = DB::table("news")
-            ->select(DB::raw("extract(MONTH from created_at) as month"), DB::raw("SUM('view') total_views"))
+        $months_count_views = DB::table("news")
+            ->select(DB::raw("extract(MONTH from created_at) as month"),DB::raw("SUM(view) as total_views"))
             ->groupBy(DB::raw("extract(MONTH from created_at)"))
-            ->orderBy(DB::raw("extract(MONTH from created_at)"))
-            ->get();
-        $data = news::renameMonth($months_count);
-        $data = json_encode($data);
-//        dd($data);
-        return view('testmodule::chartTemplate', compact('data'));
+            ->orderBy(DB::raw("extract(MONTH from created_at)"))->get();
+        $data_views = news::renameMonthViews($months_count_views);
+        $data_views = json_encode($data_views);
+
+        return view('testmodule::index', compact('data','data_views','news'));
     }
-
-    public static function test()
-    {
-        $months_count = DB::table("news")
-            ->select(DB::raw("extract(MONTH from created_at) as month"), DB::raw("(COUNT(*)) total_news"))
-            ->groupBy(DB::raw("extract(MONTH from created_at)"))
-            ->orderBy(DB::raw("extract(MONTH from created_at)"))
-            ->get();
-
-        foreach ($months_count as $month_count) {
-            $data[] = $month_count->total_news;
-
-            $label[] = News::renameMonth($month_count);
-        }
-
-        $data = json_encode($data);
-//        $label = json_encode($label);
-        dd($label);
-        return view('testmodule::chartTemplate', compact('data', 'label'));
-    }
+//    public function getViewChart()
+//    {
+//        $months_count = DB::table("news")
+//            ->select(DB::raw("extract(MONTH from created_at) as month"),DB::raw("SUM(view) as total_views"))
+//            ->groupBy(DB::raw("extract(MONTH from created_at)"))
+//            ->orderBy(DB::raw("extract(MONTH from created_at)"))->get();
+//        $data = news::renameMonthViews($months_count);
+//        return view('testmodule::chartTemplate', compact('data'));
+//    }
+//
+//    public static function test()
+//    {
+//
+//        $months_count = DB::table("news")
+//            ->select(DB::raw("extract(MONTH from created_at) as month"),DB::raw("SUM(view) as total_views"))
+//            ->groupBy(DB::raw("extract(MONTH from created_at)"))
+//            ->orderBy(DB::raw("extract(MONTH from created_at)"))->get();
+////        dd($months_count);
+////        dd(json_encode($months_count));
+//        return view('testmodule::chartTemplate', compact('data'));
+//    }
 
     /**
      * Show the form for creating a new resource.

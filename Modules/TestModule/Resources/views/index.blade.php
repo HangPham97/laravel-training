@@ -2,7 +2,7 @@
 @section('sidebar-wrapper')
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="">
+            <li class="active ">
                 <a href={{route('home')}}>
                     <i class="now-ui-icons design_app"></i>
                     <p>Dashboard</p>
@@ -14,7 +14,7 @@
                     <p>User Profile</p>
                 </a>
             </li>
-            <li class="table-list active">
+            <li class="table-list">
                 <a class="toggle-down">
                     <i class="now-ui-icons design_bullet-list-67"></i>
                     <p>Table List</p>
@@ -31,143 +31,179 @@
         </ul>
     </div>
 @endsection
+@section('chart')
+
+    <!-- End Navbar -->
+    <div class="panel-header panel-header-lg">
+        <canvas id="bigDashboardChart"></canvas>
+    </div>
+@endsection
 @section('content')
-    <section class="content">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="alert"><p style="color:red;">
-                            {{Session('success')}}
-                        </p>
-                    </div>
-                    <div class="">
-
-                        <div class="">
-                            <div class="panel panel-default">
-                                <div class="panel-heading col-md-12">
-                                    <h4 class="box-title col-md-6">News Table</h4>
-                                    <div class="add_button">
-                                        <button type="button" class="btn btn-block btn-info btn-flat">
-                                            <a href="{{ route('news.create') }}">Add</a>
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="panel-body row">
-                                    <form method="POST" id="search-form" class="form-inline col-md-12" role="form">
-                                        {{csrf_field()}}
-                                        <div class="form-group">
-                                            <label for="name">Title</label>
-                                            <input type="text" class="form-control" name="title" id="title"
-                                                   placeholder="search title">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Category</label>
-                                            <input type="hidden" name="category" value="none">
-                                            <select class="selectpicker" name="category" id="category">
-                                                <option name="category" value="none">Tất cả các danh mục</option>
-                                                @foreach($categories as $category)
-                                                    <option value="{{$category->cate_id}}">{{$category->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6 button_submit">
-                                            <button type="submit" class="btn btn-primary">Search</button>
-                                        </div>
-                                    </form>
-
-                                    <table id="admin-table" class="table table-striped col-md-12"
-                                           style="width: 100%    ">
-                                        <thead>
-                                        <tr>
-                                            <th class="col-md-1">Image</th>
-                                            <th class="col-md-1">Title</th>
-                                            <th class="col-md-3">Sample</th>
-                                            <th class="col-md-4">Content</th>
-                                            <th class="col-md-3">Category</th>
-                                            <th class="col-md-3">Action</th>
-
-                                        </tr>
-                                        </thead>
-                                        <tbody></tbody>
-                                    </table>
-                                </div>
-                            </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5 class="card-category">2018 Views</h5>
+                    <h4 class="card-title">Total Views</h4>
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
+                            <i class="now-ui-icons loader_gear"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item text-danger" href="#">Remove Data</a>
                         </div>
-                        <!-- /.col -->
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="lineChartExample"></canvas>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /.row -->
-    </section>
+        <div class="col-lg-4 col-md-6">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5 class="card-category">2018 Sales</h5>
+                    <h4 class="card-title">All products</h4>
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
+                            <i class="now-ui-icons loader_gear"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item text-danger" href="#">Remove Data</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="lineChartExampleWithNumbersAndGrid"></canvas>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5 class="card-category">Email Statistics</h5>
+                    <h4 class="card-title">24 Hours Performance</h4>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="barChartSimpleGradientsNumbers"></canvas>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <i class="now-ui-icons ui-2_time-alarm"></i> Last 7 days
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-category">Posts</h5>
+                <h4 class="card-title"> Latest Posts</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                <th class="th-align">
+                                    Image
+                                </th>
+                                <th class="th-align">
+                                    Content
+                                </th>
+                                </thead>
+                                <tbody>
+
+                                @foreach($news as $each_news)
+                                    @if($loop->index < 3)
+                                        <tr>
+                                            <td class="news-image">
+                                                <img width="500px" height="80px" src="{{\Modules\TestModule\Entities\news::getDataUrl($each_news->image)}}" alt="">
+                                            </td>
+                                            <td>
+                                                <p class="news-title">{{$each_news->title}}</p>
+                                                <p class="sample-text" ><?php echo(substr($each_news->sample,0,150).'...'); ?></p>
+                                            </td>
+                                        </tr>
+
+                                    @endif
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th class="th-align">
+                                        Image
+                                    </th>
+                                    <th class="th-align">
+                                        Content
+                                    </th>
+                                </thead>
+                                <tbody>
+
+                                @foreach($news as $each_news)
+                                    @if( $loop->index >1 && $loop->index < 5)
+                                        <tr>
+                                            <td class="news-image">
+                                                <img width="500px" height="80px" src="{{\Modules\TestModule\Entities\news::getDataUrl($each_news->image)}}" alt="">
+                                            </td>
+                                            <td>
+                                                <p class="news-title">{{$each_news->title}}</p>
+                                                <p class="sample-text" >
+                                                    <?php echo(substr($each_news->sample,0,150).'...'); ?>
+                                                </p>
+                                                {{--<span>{{$each_news->created_at}}</span>--}}
+                                            </td>
+                                        </tr>
+
+                                    @endif
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
+
 @section('script')
+    <script>
 
-    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        var data = '{{$data}}';
+        $(document).ready(function() {
+            // Javascript method's body can be found in assets/js/demos.js
+            demo.initDashboardPageCharts();
 
-    <script src="{{ asset('assets/dataTables/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/dataTables/js/dataTables.bootstrap.min.js') }}"></script>
-
-    <script type="text/javascript">
-        var table = $('#admin-table').DataTable({
-            processing: true,
-            serverSide: true,
-
-            ajax: {
-                url: "{{ route('table') }}",
-                data: function (d) {
-                    d.title = $('input[name=title]').val();
-                    d.category = $('input[name=category]').val();
-                }
-            },
-            columns: [
-                {
-                    name: 'image',
-                    data: 'images',
-                    "orderable": true,
-                    "searchable": true,
-                    "width": "10%"
-                },
-                // {data: 'images',name:'image'},
-                {data: 'title', name: 'title', "width": "15%"},
-                {
-                    data: 'display_sample', name: 'sample', "width": "20%",
-                    render: function (data) {
-                        return data;
-                    },
-                },
-                {
-                    data: 'display_content', name: 'content', "width": "26%",
-                    render: function (data) {
-                        return data;
-                    },
-                },
-                {data: 'category', name: 'category', "width": "10%"},
-                {data: 'action', name: 'action', orderable: false, searchable: false, "width": "18%"},
-            ]
         });
-
-        $('#search-form').on('submit', function (e) {
-            $category = $(".selectpicker option:selected").val();
-            $("input[name = 'category']").val($category);
-            table.draw();
-            e.preventDefault();
-        });
-
-        $('.del-button').click(function (e) {
-            if (confirm("Are you sure you want to delete?")) {
-                return true;
-            }
-            else {
-                return false;
-            }
-
-        })
-
     </script>
-
 @endsection

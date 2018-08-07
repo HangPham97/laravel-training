@@ -42,8 +42,8 @@
         <div class="col-lg-4">
             <div class="card card-chart">
                 <div class="card-header">
-                    <h5 class="card-category">Global Sales</h5>
-                    <h4 class="card-title">Shipped Products</h4>
+                    <h5 class="card-category">2018 Views</h5>
+                    <h4 class="card-title">Total Views</h4>
                     <div class="dropdown">
                         <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
                             <i class="now-ui-icons loader_gear"></i>
@@ -117,185 +117,77 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <div class="card  card-tasks">
-                <div class="card-header ">
-                    <h5 class="card-category">Backend development</h5>
-                    <h4 class="card-title">Tasks</h4>
-                </div>
-                <div class="card-body ">
-                    <div class="table-full-width table-responsive">
-                        <table class="table">
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox" checked>
-                                            <span class="form-check-sign"></span>
-                                        </label>
-                                    </div>
-                                </td>
-
-                                <td class="text-left">Sign contract for "What are conference organizers afraid of?"</td>
-                                <td class="td-actions text-right">
-                                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                                        <i class="now-ui-icons ui-2_settings-90"></i>
-                                    </button>
-                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                                        <i class="now-ui-icons ui-1_simple-remove"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox">
-                                            <span class="form-check-sign"></span>
-                                        </label>
-                                    </div>
-                                </td>
-
-                                <td class="text-left">Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                                <td class="td-actions text-right">
-                                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                                        <i class="now-ui-icons ui-2_settings-90"></i>
-                                    </button>
-                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                                        <i class="now-ui-icons ui-1_simple-remove"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox" checked>
-                                            <span class="form-check-sign"></span>
-                                        </label>
-                                    </div>
-                                </td>
-
-                                <td class="text-left">Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                                </td>
-                                <td class="td-actions text-right">
-                                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                                        <i class="now-ui-icons ui-2_settings-90"></i>
-                                    </button>
-                                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                                        <i class="now-ui-icons ui-1_simple-remove"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="card-footer ">
-                    <hr>
-                    <div class="stats">
-                        <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
-                    </div>
-                </div>
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-category">Posts</h5>
+                <h4 class="card-title"> Latest Posts</h4>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-category">All Persons List</h5>
-                    <h4 class="card-title"> Employees Stats</h4>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class=" text-primary">
-                            <th>
-                                Name
-                            </th>
-                            <th>
-                                Country
-                            </th>
-                            <th>
-                                City
-                            </th>
-                            <th class="text-right">
-                                Salary
-                            </th>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>
-                                    Dakota Rice
-                                </td>
-                                <td>
-                                    Niger
-                                </td>
-                                <td>
-                                    Oud-Turnhout
-                                </td>
-                                <td class="text-right">
-                                    $36,738
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Minerva Hooper
-                                </td>
-                                <td>
-                                    Curaçao
-                                </td>
-                                <td>
-                                    Sinaai-Waas
-                                </td>
-                                <td class="text-right">
-                                    $23,789
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Sage Rodriguez
-                                </td>
-                                <td>
-                                    Netherlands
-                                </td>
-                                <td>
-                                    Baileux
-                                </td>
-                                <td class="text-right">
-                                    $56,142
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Doris Greene
-                                </td>
-                                <td>
-                                    Malawi
-                                </td>
-                                <td>
-                                    Feldkirchen in Kärnten
-                                </td>
-                                <td class="text-right">
-                                    $63,542
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Mason Porter
-                                </td>
-                                <td>
-                                    Chile
-                                </td>
-                                <td>
-                                    Gloucester
-                                </td>
-                                <td class="text-right">
-                                    $78,615
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                <th class="th-align">
+                                    Image
+                                </th>
+                                <th class="th-align">
+                                    Content
+                                </th>
+                                </thead>
+                                <tbody>
+
+                                <?php $__currentLoopData = $news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $each_news): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($loop->index < 3): ?>
+                                        <tr>
+                                            <td class="news-image">
+                                                <img width="500px" height="80px" src="<?php echo e(\Modules\TestModule\Entities\news::getDataUrl($each_news->image)); ?>" alt="">
+                                            </td>
+                                            <td>
+                                                <p class="news-title"><?php echo e($each_news->title); ?></p>
+                                                <p class="sample-text" ><?php echo(substr($each_news->sample,0,150).'...'); ?></p>
+                                            </td>
+                                        </tr>
+
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th class="th-align">
+                                        Image
+                                    </th>
+                                    <th class="th-align">
+                                        Content
+                                    </th>
+                                </thead>
+                                <tbody>
+
+                                <?php $__currentLoopData = $news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $each_news): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if( $loop->index >1 && $loop->index < 5): ?>
+                                        <tr>
+                                            <td class="news-image">
+                                                <img width="500px" height="80px" src="<?php echo e(\Modules\TestModule\Entities\news::getDataUrl($each_news->image)); ?>" alt="">
+                                            </td>
+                                            <td>
+                                                <p class="news-title"><?php echo e($each_news->title); ?></p>
+                                                <p class="sample-text" >
+                                                    <?php echo(substr($each_news->sample,0,150).'...'); ?>
+                                                </p>
+                                                
+                                            </td>
+                                        </tr>
+
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

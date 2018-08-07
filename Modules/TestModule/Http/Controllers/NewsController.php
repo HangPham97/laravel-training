@@ -19,7 +19,7 @@ class NewsController extends Controller
     {
         $categories = Category::all();
 
-        return view('testmodule::index', compact('categories'));
+        return view('testmodule::newsTable', compact('categories'));
     }
 
     /**

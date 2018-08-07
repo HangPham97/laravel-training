@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function show()
     {
         $cate = Category::all();
-        return view('testmodule::category', compact('cate'));
+        return view('testmodule::categoryTable', compact('cate'));
     }
 
     public function create()

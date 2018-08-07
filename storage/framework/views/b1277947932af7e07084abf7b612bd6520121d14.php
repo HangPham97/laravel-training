@@ -57,13 +57,13 @@
                                     <form method="POST" id="search-form" class="form-inline col-md-12" role="form">
                                         <?php echo e(csrf_field()); ?>
 
-                                        <div class="form-group">
+                                            <div class="col-md-4 form-group title-form">
                                             <label for="name">Title</label>
                                             <input type="text" class="form-control" name="title" id="title"
                                                    placeholder="search title">
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="col-md-4 form-group">
                                             <label>Category</label>
                                             <input type="hidden" name="category" value="none">
                                             <select class="selectpicker" name="category" id="category">
@@ -73,7 +73,7 @@
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                         </div>
-                                        <div class="col-md-6 button_submit">
+                                        <div class="col-md-4 button_submit">
                                             <button type="submit" class="btn btn-primary">Search</button>
                                         </div>
                                     </form>

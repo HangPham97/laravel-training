@@ -10,14 +10,16 @@
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
     <!-- CSS Files -->
 
     <link href="{{asset('assets/css/now-ui-dashboard.css?v=1.1.0')}}" rel="stylesheet" />
-    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('bower_components/Ionicons/css/ionicons.min.css')}}">
-
-    <!-- CSS Just for demo purpose, don't include it in your project -->
+    {{--<!-- CSS Files -->--}}
     <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
+
+    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
+
     <link href="{{asset('assets/demo/demo.css')}}" rel="stylesheet" />
     @yield('link')
 </head>
@@ -29,14 +31,14 @@
         <!--
           Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
       -->
-        <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                CT
-            </a>
-            <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                Creative Tim
-            </a>
-        </div>
+        {{--<div class="logo">--}}
+            {{--<a href="http://www.creative-tim.com" class="simple-text logo-mini">--}}
+                {{--CT--}}
+            {{--</a>--}}
+            {{--<a href="http://www.creative-tim.com" class="simple-text logo-normal">--}}
+                {{----}}
+            {{--</a>--}}
+        {{--</div>--}}
         @yield('sidebar-wrapper')
 
     </div>
