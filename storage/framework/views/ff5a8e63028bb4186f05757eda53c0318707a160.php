@@ -1,0 +1,1 @@
+<img src="<?php echo e($news->images); ?>" alt="" width="90px" height="50px">

@@ -1,6 +1,4 @@
 
-var data = '{{$data}}';
-var data_views = '{{$data_views}}'
 demo = {
   initPickColor: function() {
     $('.pick-class-label').click(function() {
@@ -100,7 +98,7 @@ demo = {
           fill: true,
           backgroundColor: gradientFill,
           borderWidth: 2,
-          data:  JSON.parse(data),
+          data:  JSON.parse(data_views),
         }]
       },
       options: gradientChartOptionsConfiguration
@@ -332,7 +330,7 @@ demo = {
           fill: true,
           backgroundColor: gradientFill,
           borderWidth: 2,
-          data:  JSON.parse(data),
+          data:  JSON.parse(data_views),
         }]
       },
       options: gradientChartOptionsConfiguration

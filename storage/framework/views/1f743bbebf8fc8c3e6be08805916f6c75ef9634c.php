@@ -61,7 +61,7 @@
                                                             </h3>
 
                                                             <div class="box-body pad" style="">
-                                                                <input id="cate-id" type="text" name="cate_id" class="form-control" value=""/>
+                                                                <input id="cate-id" type="text" name="cate_id" class="form-control" value="<?php echo e(old('cate_id')); ?>"/>
 
                                                             </div>
 
@@ -76,7 +76,7 @@
                                                         <!-- /.box-header -->
                                                         <div class="box-body pad" style="">
 
-                                                            <input id="name" type="text" name="name" class="form-control" value="Đời Sống">
+                                                            <input id="name" type="text" name="name" class="form-control" value="<?php echo e(old('name')); ?>">
 
                                                         </div>
                                                     </div>

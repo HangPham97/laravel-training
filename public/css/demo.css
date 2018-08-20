@@ -38,7 +38,7 @@ html, body {
 	top: 110%;
 	text-align: center;
 	width: 100%;
-	font-weight: 550;
+	font-weight: 500;
 }
 @media(max-width:1024px) and ( min-width: 769px){
 	.inner .text{

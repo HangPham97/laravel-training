@@ -1,3 +1,6 @@
+body{
+    min-height: 700px;
+}
 .tim-row {
   margin-bottom: 20px;
 }
@@ -233,7 +236,6 @@ body{
   background-color: white;
   border-color: #d2d6de;
   padding: 6px 12px;
-  border-radius: 3px;
 }
 #search-form input{
     width:200px;
@@ -241,6 +243,11 @@ body{
 .selectpicker {
   margin-left: 10px;
   margin-right: 20px;
+    border-radius: 30px;
+}
+.selectpicker:focus{
+    outline: hidden !important;
+    box-shadow: 0 0 0 0;
 }
 .card label{
   color: black;
@@ -268,8 +275,14 @@ body{
     float:right;
     background-color: #337ab7;
 }
+#search-form .btn:active{
+    background-color: #337ab7;
+}
 .add_button .btn:active:hover{
   background-color: #337ab7;
+}
+.add-button-color:active{
+    background-color: #337ab7;
 }
 #admin-table_wrapper > .row{
     width: 100%;
@@ -288,6 +301,12 @@ body{
 }
 .form-control{
     padding: 3px 12px;
+    border-radius: 30px;
+    background-color: transparent;
+    border: 1px solid #E3E3E3;
+    border-radius: 30px;
+    color: #2c2c2c;
+    line-height: normal;
 }
 .form-check-inline{
   display: block;
@@ -345,9 +364,15 @@ body{
     width: 80%;
     border-radius: 30px;
 }
-.btn-primary:active, .btn-danger:active{
+.btn-danger:active{
     background-color: #bd2130 !important;
     outline:none;
+}
+.btn-primary:focus{
+    background-color: #005cbf !important;
+}
+.btn-primary:active{
+    outline: none;
 }
 .input-group:active{
     outline: none;
@@ -375,4 +400,51 @@ body{
 }
 .th-align{
     text-align: center;
+}
+.dropdown-menu > .dropdown-item{
+    font-size: 14px;
+    margin-top: 0;
+    padding: 2px 17px;
+}
+.input-sm {
+    marigin-left: 10px;
+    margin-right: 10px;
+}
+#admin-table {
+   width: 1020px !important;
+}
+.about-me{
+    border: 2px solid gray;
+    text-align: left;
+}
+input{
+    outline: none !important;
+}
+a.dropdown-item:hover{
+    color: #888 !important;
+}
+a.dropdown-item{
+    cursor: pointer;
+}
+.panel-default{
+    border: none;
+}
+button, input, optgroup, select, textarea, h3{
+    font-family: Arial;
+}
+.sample{
+    padding: 10px !important;
+    border: 1px solid #E3E3E3 !important;
+    outline: none !important;
+    max-height: 100px !important;
+}
+.form-control:focus, .sample:focus{
+    border: 1px solid #f96332 !important;
+    box-shadow: 0 0 0 0 !important;
+}
+input[type=file]{
+    padding-top: 5px;
+}
+#navigation input:focus{
+    border: transparent !important;
 }

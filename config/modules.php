@@ -28,8 +28,8 @@ return [
         'files' => [
             'start' => 'start.php',
             'routes' => 'Http/routes.php',
-            'views/index' => 'Resources/views/newsTable.php',
-            'views/master' => 'Resources/views/layouts/master.blade.php',
+            'views/index' => 'Resources/views/newsTable.blade.php',
+            'views/master' => 'Resources/views/layouts/masterDashboard.blade.php',
             'scaffold/config' => 'Config/config.php',
             'composer' => 'composer.json',
         ],
